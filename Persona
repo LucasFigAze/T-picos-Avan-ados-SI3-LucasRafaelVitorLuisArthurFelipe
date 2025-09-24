@@ -1,0 +1,50 @@
+Persona
+Nossa IA será uma ferramenta voltada para a análise do limite de crédito atribuido a um cliente de uma empresa B2B ou B2C, em que a empresa fornece um crédito ao seu cliente que possa ser utilizado em compras dentro do seu mix de soluções e serviços.
+
+**1. Nome do Domínio**
+
+- Análise de limite de crédito
+
+**2. Descrição do Domínio**
+
+- O limite de crédito fornecido por uma empresa corresponde a um montante disponibilizado a um cliente para que o mesmo faça compras a prazo, onde a medida que compras são feitas esse limite é consumido, sendo liberado mediante pagamento. Para estabelecer o limite a empresa fornecedora faz análises do perfil do cliente, adimplência de pagamento e histórico de compras, dessa forma estabelecendo um valor considerando confiança no cliente, pagamentos assíduos e disponibilidade de capital.
+
+**3. Justificativa da Escolha**
+
+- O processo de liberação ou não de limite de crédito em empresas hoje é um processo manual, estruturado e que demanda tempo e capital humano par ser realizado. Escolhemos esse processo por ser crucial, no cotidiano de uma empresa, conseguir avaliar quais os clientes devem ser atendidos mesmo quando o limite foi atingido, de forma a evitar perda desses clientes, mante-los satisfeitos e fidelizados, com uma análise rápida, coerente e justa para isso, evitando processos recorrentes de análise de crédito e travas no processo comercial.
+
+**4. Problemas/Desafios Atuais**
+
+- **Problemas:**
+    - Demora em análise de crédito de novos clientes.
+    - Processo de reanálise do crédito periódica e defasada.
+    - Perda de vendas para clientes com limites baixos.
+    - Análise relativa e baseada em achismos, não dados.
+    - Múltiplas plataformas para gerar um número de limite.
+    - Processo que demanda muito capital humano.
+
+**5. Oportunidades de IA Generativa**
+
+- Oportunidades identificadas:
+    - Automação na análise do limite de crédito.
+    - Sugestão do limite de crédito automatizada.
+    - Reanálise baseada em dados próprios de forma automática.
+    - Aprovação/Negação de aumento de limite para vendas acima do limite atual.
+
+**6. Benefícios Esperados (Qualitativos)**
+
+- **Instruções:** Descreva os benefícios em um nível mais alto e qualitativo. Pense na visão de futuro e no impacto geral para a organização e seus clientes. Estes benefícios servirão de inspiração para os resultados quantitativos definidos posteriormente.
+- **Exemplo:**
+    - Agilizar o processo de análise.
+    - Liberar o capital humano para ações estratégicas não manuais.
+    - Evitar perda de vendas por limite defasado.
+    - Automação de processo importante na operação.
+
+**7. Riscos e Considerações Iniciais**
+
+- **Riscos:**
+    - Verificar possibilidade de integração com ferramenta de gestão para automação do processo na empresa.
+    - Como adquirir os dados dos clientes solicitando limite de crédito.
+    - Quais os parâmetros que precisamos avaliar para dar uma boa definição de um limite de crédito, e se precisam de algum peso para sua análise.
+    - Como a IA vai ser integrada no processo atual da empresa
+    - Falta de confiança dos stakeholders nos números gerados pela solução.
