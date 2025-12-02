@@ -4,36 +4,64 @@
 
 Enquanto o `Canvas de Desenho de Experimento` valida a *hipótese de negócio*, o **Canvas de Testes e Validação** foca em verificar a *qualidade técnica da implementação*. Ele organiza e documenta os processos de testes do assistente inteligente, garantindo que as funcionalidades atendam aos requisitos especificados и que o sistema opere de forma confiável, segura e eficiente. Abrange testes funcionais, de desempenho, de segurança e de experiência do usuário, além de definir critérios de aceitação claros.
 
-## Instruções de Preenchimento
-
-Preencha cada seção deste canvas com informações detalhadas sobre os tipos de testes, casos específicos, métricas e resultados. O objetivo é garantir a rastreabilidade e a eficiência nos processos de validação.
-
 ### 1. Objetivo dos Testes
-- **Instruções**: Descreva o propósito principal dos testes, vinculando-os aos objetivos gerais do projeto.
+- **Objetivo**: Garantir que o assistente inteligente consiga se conectar corretamente à API do Google Gemini, validar carregamento de variáveis de ambiente, configuração da SDK, instanciação do modelo e retorno de resposta a partir de um prompt simples. O objetivo é assegurar que a camada de integração está funcional e pronta para suportar fluxos mais complexos de negociação e tomada de decisão.
 
 ### 2. Tipos de Testes
-- **Instruções**: Liste os tipos de testes que serão realizados. Inclua testes funcionais, de desempenho, de segurança, entre outros.
+- **Teste de Integração**: Validar a comunicação entre o sistema local e a API do Google Gemini.
+- **Teste de Configuração/Ambiente**: Verificar a existência e leitura do arquivo .env.
+- **Teste Funcional Básic**o**: Confirmar que o modelo responde corretamente a prompts simples.
+- **Teste de Resiliência**: Capturar e interpretar erros de autenticação, conexão e indisponibilidade da API.
+- **Teste de Dependências**: Verificar funcionamento das bibliotecas dotenv e google.generativeai
 
 ### 3. Casos de Teste
-- **Instruções**: Detalhe os cenários e casos específicos a serem testados, incluindo entradas, ações esperadas e resultados esperados.
+- **Caso 1:** 
+  - Carregamento do .env
+  - Entrada: Arquivo .env existente.
+  - Ação: Executar o script.
+  - Resultado Esperado: Mensagem “Arquivo .env carregado.”
+- **Caso 2:** 
+  - Chave de API presente
+  - Entrada: Variável GOOGLE_API_KEY definida.
+  - Ação: Executar o script.
+  - Resultado Esperado: Mensagem “Chave de API carregada com sucesso.”
+- **Caso 3:** 
+  - Chave de API ausente
+  - Entrada: .env sem a variável.
+  - Ação: Executar o script.
+  - Resultado Esperado: Mensagem de erro específica avisando que não foi encontrada.
+- **Caso 4:** 
+  - Chamada bem-sucedida ao Gemini
+  - Entrada: Prompt “Qual é a capital do Brasil?”
+  - Ação: Executar o método generate_content.
+  - Resultado Esperado: Retorno textual do modelo e mensagem “TESTE BEM-SUCEDIDO!”.
+- **Caso 5:** 
+  - Falha na chamada à API
+  - Entrada: Chave inválida / sem internet / API indisponível.
+  - Ação: Executar script.
+  - Resultado Esperado: Mensagem “TESTE FALHOU” + causas prováveis.
 
 ### 4. Critérios de Aceitação
-- **Instruções**: Defina os critérios que determinam se o sistema passou em cada tipo de teste.
+- O script deve carregar corretamente a variável do .env.
+- O SDK deve ser configurado sem erros.
+- A chamada ao modelo deve retornar uma resposta válida.
+- O sistema deve exibir mensagens amigáveis em caso de erro.
+- Todo erro deve ser tratável pelo bloco except, sem travar a aplicação.
 
 ### 5. Ferramentas de Teste
-- **Instruções**: Liste as ferramentas que serão usadas para executar e monitorar os testes.
+- **Ferramentas**: Para realização dos testes utilizamos o python-dotenv e google-generativeai (SDK oficial Gemini)
 
 ### 6. Equipe e Responsabilidades
-- **Instruções**: Identifique os membros da equipe responsáveis por cada tipo de teste.
+- **Equipe**: Os testes são feitos a cada iteração no código por todos os membros, já que as ferramentas automatizam.
 
 ### 7. Resultados e Relatórios
-- **Instruções**: Documente os resultados de cada teste realizado, indicando aprovações, falhas e ações corretivas.
+- **Resultados**: É possível acompanhar os resultados no código.
 
 ### 8. Planos de Reteste
-- **Instruções**: Detalhe as ações planejadas para retestar casos que não foram aprovados.
+- **Reteste**: A cada iteração realizamos novos testes automatizados.
 
 ### 9. Monitoramento Contínuo
-- **Instruções**: Estabeleça mecanismos para monitorar continuamente o desempenho do sistema após a validação inicial.
+- **Monitoramento**: Automatizar execução periódica do teste em pipeline.
 
 ### 10. Feedback e Iteração
-- **Instruções**: Planeje como o feedback dos testes será usado para iterar e melhorar o sistema.
+- **Feedback**: Os feedbacks pegos serão adicionados ao Backlog da solução.
