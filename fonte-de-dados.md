@@ -1,5 +1,5 @@
-### **1. Fonte de Dados: Give Me Some Credit**
-* **Nome da Fonte de Dados:** Give Me Some Credit
+### **1. Fonte de Dados: ERP**
+* **Nome da Fonte de Dados:** ERP do cliente parceiro
 * **Descrição da Fonte de Dados:** Dataset de uma competição do Kaggle com dados históricos de 250.000 mutuários. O objetivo é prever a probabilidade de um indivíduo ter dificuldades financeiras nos próximos dois anos.
 * **Origem dos Dados:** Competição no Kaggle, com dados fornecidos por uma fonte anônima (provavelmente uma instituição financeira).
 * **Tipo de Dados:** Dados numéricos (idade, renda mensal, número de empréstimos, etc.) e categóricos. A variável alvo é binária (0 ou 1).
@@ -14,8 +14,8 @@
 
 ---
 
-### **2. Fonte de Dados: Statlog (German Credit Data)**
-* **Nome da Fonte de Dados:** Statlog (German Credit Data)
+### **2. Fonte de Dados: DISCORD**
+* **Nome da Fonte de Dados:** DISCORD
 * **Descrição da Fonte de Dados:** Dataset que classifica pessoas com bom ou mau risco de crédito. Contém 1.000 instâncias e 20 atributos, sendo 7 numéricos e 13 categóricos.
 * **Origem dos Dados:** Repositório de Machine Learning da UCI (Universidade de Hamburgo).
 * **Tipo de Dados:** Dados numéricos e categóricos.
@@ -45,17 +45,3 @@
 * **Requisitos de Integração:** Necessidade de integração de múltiplos arquivos (`.csv`) em um único conjunto de dados coerente para análise.
 
 ---
-
-### **4. Fonte de Dados: Credit (OpenML ID 44089)**
-* **Nome da Fonte de Dados:** Credit (OpenML ID 44089)
-* **Descrição da Fonte de Dados:** Versão pré-processada do dataset "Give Me Some Credit" para uso em benchmarks de machine learning. O objetivo é a classificação binária de crédito.
-* **Origem dos Dados:** Plataforma OpenML, transformada a partir do dataset "Give Me Some Credit" do Kaggle.
-* **Tipo de Dados:** Dados numéricos.
-* **Formato dos Dados:** Formato padrão da plataforma OpenML, provavelmente um arquivo tabular.
-* **Frequência de Atualização:** Não há atualização, são dados estáticos e já processados.
-* **Qualidade dos Dados:** Alta, pois o dataset já passou por um processo de limpeza e transformação.
-* **Métodos de Coleta:** Download do dataset na plataforma OpenML.
-* **Acesso aos Dados:** Acesso via download direto na página do dataset.
-* **Proprietário dos Dados:** OpenML (responsável por hospedar e disponibilizar a versão transformada).
-* **Restrições de Privacidade e Segurança:** Os dados são anonimizados, assim como na fonte original do Kaggle.
-* **Requisitos de Integração:** Mínimos, pois o dataset já está limpo e pré-processado.
