@@ -3,30 +3,26 @@
 ## Descrição
 Este canvas é tipicamente utilizado quando as métricas do `Canvas de Métricas de Escala e Impacto` indicam que o sistema está se aproximando de seus limites de capacidade atuais. Ele auxilia no mapeamento e organização dos recursos, estratégias e possíveis gargalos associados ao aumento do volume de usuários e interações no assistente inteligente, garantindo que o sistema esteja preparado para crescer sem perda de desempenho ou aumento excessivo de custos.
 
-## Instruções de Preenchimento
-
-Preencha cada seção com informações detalhadas sobre as estratégias de escalabilidade do assistente. O objetivo é assegurar que o sistema possa lidar com volumes crescentes de forma eficiente.
-
 ### 1. Objetivo da Escalabilidade
-- **Instruções**: Descreva o propósito principal do processo de escalabilidade.
+- **Escalabilidade**: Esse Canvas terá o intuito de apoiar quando a solução passar da fase inicial com o cliente piloto.
 
 ### 2. Volume Esperado de Interações
-- **Instruções**: Estime o volume de interações no cenário atual e no futuro escalado.
+- **Volume**: Vamos avaliar o volume em um cliente e entender a demanda para quando o número crescer.
 
 ### 3. Requisitos de Infraestrutura
-- **Instruções**: Liste os requisitos técnicos necessários para suportar o volume escalado.
+- **Infraestrutura**: Entender o consumo de um cliente e como isso cresce em média.
 
 ### 4. Estratégias de Escalabilidade
-- **Instruções**: Defina as estratégias que serão usadas para escalar o sistema.
+- **Estratégia**: A ser definida.
 
 ### 5. Custo Estimado
-- **Instruções**: Estime os custos associados ao aumento de recursos.
+- **Custo**: Custo será levantasdo
 
 ### 6. Riscos e Mitigação
-- **Instruções**: Identifique os principais riscos associados à escalabilidade e proponha soluções.
+- **Riscos**: Identificaremos os riscos de forma prática.
 
 ### 7. Monitoramento de Escalabilidade
-- **Instruções**: Detalhe como o sistema será monitorado para garantir desempenho durante a escalabilidade.
+- **Monitoramento**: Definir o formato de avaliação do uso.
 
 ### 8. Plano de Teste em Ambiente Escalado
-- **Instruções**: Planeje como o sistema será testado no novo cenário escalado.
+- **Tests**: Vamos automatizar os testes futuramente.

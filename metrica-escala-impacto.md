@@ -1,82 +1,76 @@
 # Canvas de Métricas de Escala e Impacto
 
 ## Descrição
-O **Canvas de Métricas de Escala e Impacto** organiza e documenta as métricas essenciais para monitorar a operação do assistente inteligente em escala, avaliando seu desempenho, uso e impacto no negócio. Ele ajuda a garantir que o sistema mantenha qualidade e eficiência à medida que cresce.
+O **Canvas de Métricas de Escala e Impacto** organiza e documenta as métricas essenciais para monitorar a operação do FinegocIA no cliente piloto, avaliando se o sistema está gerando análises confiáveis, reduzindo o esforço operacional e produzindo valor mensurável para o negócio, apoiando sua evolução para uma versão escalável.
 
-## Instruções de Preenchimento
-
-Preencha cada seção com informações detalhadas sobre as métricas e ferramentas de monitoramento utilizadas para avaliar o impacto do assistente. O objetivo é assegurar que as metas estratégicas sejam atingidas e que o sistema esteja preparado para melhorias contínuas.
 
 ### 1. Objetivo do Monitoramento
-- **Instruções**: Descreva o propósito principal do monitoramento e como ele está relacionado aos objetivos do projeto.
-- **Exemplo**: "Monitorar o impacto do assistente no tempo de resposta, satisfação do usuário e eficiência operacional."
+- **Objetivo**: Avaliar se o sistema está gerando análises confiáveis, reduzindo o esforço operacional e produzindo valor mensurável para o negócio, apoiando na negociação sem prejudicar de forma alguma o cliente parceiro.
+
 
 ### 2. Métricas de Uso
-- **Instruções**: Liste as métricas relacionadas ao uso do assistente.
-- **Exemplo**:
-  - Número de interações diárias.
-  - Número de usuários ativos por semana/mês.
-  - Taxa de adoção do assistente em relação ao método tradicional.
+- **Métricas**:
+  - Número de análises de crédito realizadas por dia/semana/mês.
+  - Número de usuários ativos.
+  - Número de conversas diferentes feitas pela ferramenta.
+  - Taxa de adoção do sistema em relação ao processo manual anterior.
+  - Volume de dados processados
 
 ### 3. Métricas de Desempenho
-- **Instruções**: Liste as métricas que avaliam a eficiência técnica do assistente.
-- **Exemplo**:
-  - Tempo médio de resposta.
-  - Taxa de erros ou falhas durante as interações.
-  - Latência nas consultas ao banco de dados.
+- **Métricas**:
+  - Tempo médio para gerar a resposta com nova negociação.
+  - Latência nas consultas ao banco de dados interno.
+  - Percentual de análises concluídas sem intervenção manual.
+  - Disponibilidade do sistema.
+  - Tempo médio de resposta da API de scoring.
 
 ### 4. Métricas de Impacto no Negócio
-- **Instruções**: Liste as métricas que mostram o impacto direto no negócio.
-- **Exemplo**:
-  - Redução de custos operacionais (ex.: menos chamadas telefônicas).
-  - Aumento de receita por meio de novos agendamentos.
-  - Taxa de retenção de usuários.
+- **Métricas**:
+  - Redução do tempo total do processo de análise de crédito.
+  - Redução de erros operacionais no processo manual.
+  - Aumento da assertividade das negociações de crédito.
+  - Redução de custos operacionais.
+  - Aumento da produtividade.
+  - SLA de atendimento respeitado.
+  - Número de negociações de sucesso.
 
 ### 5. Métricas de Satisfação do Usuário
-- **Instruções**: Liste as métricas que avaliam a experiência e a satisfação dos usuários.
-- **Exemplo**:
-  - Pontuação de Satisfação do Cliente (CSAT).
-  - Taxa de retorno (usuários que utilizam o assistente repetidamente).
-  - Feedback positivo/negativo por interação.
+- **Métricas**:
+  - NPS dos clientes e da equipe.
+  - Taxa de reuso.
+  - Quantidade de feedbacks positivos/negativos por semana.
+  - Taxa de rejeição do relatório.
 
 ### 6. Ferramentas de Monitoramento
-- **Instruções**: Liste as ferramentas que serão usadas para coletar e analisar as métricas.
-- **Exemplo**:
-  - **Uso e Desempenho**: Google Analytics, Datadog.
-  - **Satisfação**: Surveys no chatbot, Hotjar.
-  - **Impacto no Negócio**: BI Tools (Power BI, Tableau).
+- **Métricas**:
+  - **Uso e Desempenho**: Google Analytics.
+  - **Satisfação**: Surveys no chatbot.
+  - **Impacto no Negócio**: Google Sheets e diagnóstico inicial/final.
 
 ### 7. Benchmarks
-- **Instruções**: Defina valores de referência para cada métrica, baseados em dados históricos ou melhores práticas.
-- **Exemplo**:
-  - Tempo médio de resposta ideal: ≤ 2 segundos.
-  - Satisfação do cliente ideal: ≥ 90%.
-  - Taxa de adoção ideal: ≥ 80% em 3 meses.
+- **Métricas**:
+  - Tempo médio de resposta ideal: ≤ 5 segundos.
+  - Satisfação do cliente ideal: ≥ 70%.
+  - Taxa de adoção ideal: ≥ 80% em 6 meses.
+  - Percentual de análises automatizadas sem intervenção: ≥ 60%.
 
 ### 8. Acompanhamento de Tendências
-- **Instruções**: Descreva como as tendências serão monitoradas e analisadas.
-- **Exemplo**:
-  - Relatórios semanais de uso e desempenho.
-  - Comparação de métricas atuais com benchmarks históricos.
-  - Identificação de sazonalidades ou padrões emergentes.
+- **Métricas**:
+  - Relatórios semanais de uso, performance e falhas.
+  - Comparação mensal das métricas com benchmarks definidos.
+  - Identificação de padrões nos feedbacks recebidos via Discord.
+  - Visualização das tendências nas planilhas.
 
 ### 9. Ações Baseadas nas Métricas
-- **Instruções**: Planeje ações corretivas ou melhorias com base nos dados coletados.
-- **Exemplo**:
-  - Otimizar consultas SQL se a latência exceder 3 segundos.
-  - Revisar o design do chatbot se a taxa de feedback negativo superar 5%.
-  - Lançar campanhas de divulgação para aumentar a taxa de adoção.
+- **Métricas**:
+  - Reforçar infraestrutura se a latência ultrapassar o benchmark.
+  - Ajustar regras de negócio ou pré-processamento se houver aumento de retrabalho.
+  - Refinar o modelo de avaliação caso a assertividade caia.
+  - Criar novos treinamentos se o NPS diminuir.
+  - Revisar integração com o ERP se crescer a taxa de erros.
 
 ### 10. Relatórios e Compartilhamento
-- **Instruções**: Planeje como os relatórios serão gerados e compartilhados com os stakeholders.
-- **Exemplo**:
-  - Relatórios mensais enviados para a equipe de produto.
-  - Painéis interativos no Power BI para consultas em tempo real.
-  - Reuniões trimestrais para revisão estratégica das métricas.
-
-## Formato de Uso
-- **Periodicidade**: Atualize o canvas regularmente com base nos relatórios gerados.
-- **Ferramentas**: Utilize ferramentas colaborativas como Google Sheets, Notion ou Trello para rastreamento.
-
-## Conclusão
-O **Canvas de Métricas de Escala e Impacto** é essencial para monitorar o crescimento sustentável do assistente e garantir que ele continue entregando valor ao negócio e aos usuários.
+- **Métricas**:
+  - Relatórios mensais enviados ao cliente piloto e ao time de produto.
+  - Relatórios no Google Sheets para consultas em tempo real.
+  - Consolidado dos diagnósticos para revisão estratégica das métricas e da solução.
