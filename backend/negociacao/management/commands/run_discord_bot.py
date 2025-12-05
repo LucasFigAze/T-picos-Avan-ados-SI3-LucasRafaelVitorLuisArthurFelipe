@@ -4,6 +4,10 @@ import os
 import pytz
 from datetime import datetime
 from dotenv import load_dotenv
+from django.core.management.base import BaseCommand
+from asgiref.sync import sync_to_async
+
+from negociacao.services import chamar_gemini
 
 load_dotenv()
 
@@ -78,8 +82,17 @@ class MyClient(discord.Client):
             content = ""
             for text in self.messages[message.author.id]:
                 content += text["content"] + " "
-            print(content)
+            
+            resposta = await processar_mensagem_async(
+                            str(message.author.id), 
+                            content
+            )
+
+            if resposta:
+                await message.channel.send(resposta)
+                
             del self.messages[message.author.id]
+            del content
                                     
         else:
             print(f"{len(self.messages[message.author.id])}° mensagem enviada")
@@ -94,6 +107,8 @@ intents.message_content = True
 intents.typing = True
 intents.dm_typing = True
 intents.dm_messages = True
+processar_mensagem_async = sync_to_async(chamar_gemini)
+
 
 client = MyClient(intents=intents)
 client.run(os.getenv('DISCORD_TOKEN'))
