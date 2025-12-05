@@ -2,18 +2,18 @@
 
 ### 1. Objetivo Estratégico Geral
 
-Implementar um sistema de Inteligência Artificial para automatizar e personalizar a comunicação de cobrança em estágios iniciais, visando aumentar a eficiência da recuperação de crédito e reduzir os custos operacionais associados à intervenção humana.
+Implementar um sistema de Inteligência Artificial para automatizar e personalizar a comunicação de negociação de crédito, visando aumentar a eficiência da negociação e reduzir os custos operacionais associados à intervenção humana.
 
 ### 2. Objetivos Estratégicos Secundários
 
-- Reduzir a necessidade de intervenção humana nas etapas iniciais de cobrança (ex: até 30 dias de atraso).
-- Aumentar a taxa de resposta e engajamento dos clientes com as mensagens de cobrança, incentivando o pagamento espontâneo.
-- Melhorar a experiência do cliente durante o processo de cobrança, utilizando uma comunicação empática e adaptada ao seu histórico.
+- Reduzir a necessidade de intervenção humana nas etapas de negociação de crédito com clientes (ex: pagar em 4 parcelas não 3).
+- Aumentar a taxa de pagamento e engajamento dos clientes com as mensagens de cobrança, incentivando até o pagamento espontâneo.
+- Melhorar a experiência do cliente durante o processo de cobrança e pagamento, utilizando uma comunicação empática e adaptada ao seu histórico.
 - Padronizar o tom de voz da comunicação, garantindo consistência e alinhamento com a marca, ao mesmo tempo que permite personalização.
 
 ### 3. Resultados-Chave Esperados (Quantitativos)
 
-- Reduzir em 40% o volume de contatos manuais de cobrança para dívidas com até 30 dias de atraso, no prazo de 6 meses após a implementação.
+- Reduzir em 60% o volume de contatos manuais de negociação para dívidas com até 30 dias de atraso, no prazo de 6 meses após a implementação.
 - Aumentar em 15% a taxa de pagamentos realizados em até 72 horas após o envio da mensagem automatizada, nos primeiros 3 meses de operação.
 - Diminuir em 25% o número de reclamações de clientes relacionadas à comunicação de cobrança em 6 meses.
 
