@@ -178,10 +178,6 @@ def confirmar_envio_outbound(cliente_id, valor_inicial, mensagem_texto):
 
 
 def acionar_outbound_manual(discord_id):
-    """
-    Função EXCLUSIVA para o seu Simulador de Terminal.
-    Força o envio da mensagem inicial se o cliente estiver NAO_INICIADO.
-    """
     try:
         cliente = ClienteFinal.objects.get(discord_user_id=discord_id)
 
@@ -231,3 +227,67 @@ def calcular_tabela_parcelas(valor_total, max_parcelas, taxa_juros_am):
         tabela.append(linha)
 
     return "\n".join(tabela)
+
+
+def verificar_retorno_analista():
+    """
+    Busca acordos que foram analisados (Aprovados/Rejeitados) mas ainda não notificados no Discord.
+    """
+    acordos = AcordoProposto.objects.filter(
+        status__in=['APROVADO', 'REJEITADO'],
+        notificado_discord=False
+    )
+
+    notificacoes = []
+
+    for acordo in acordos:
+        cliente = acordo.cliente_final
+        msg_texto = ""
+
+        if acordo.status == 'APROVADO':
+            # CENÁRIO 1: APROVADO
+            link_pgto = f"https://finegocia.com/pagar/{acordo.id}"
+
+            msg_texto = (
+                f"🎉 **Boas notícias, {cliente.nome_completo}!**\n\n"
+                f"Seu acordo (ID #{acordo.id}) foi **APROVADO** pela nossa equipe.\n"
+                f"Aqui está o link para acessar seu boleto/pix e regularizar sua situação:\n\n"
+                f"👉 **{link_pgto}**\n\n"
+                f"Após o pagamento, seu nome será limpo em até 5 dias úteis. Obrigado por negociar conosco!"
+            )
+
+            # Atualiza status para CONCLUIDO
+            cliente.status_conversa = 'CONCLUIDO'
+
+        elif acordo.status == 'REJEITADO':
+            # CENÁRIO 2: REJEITADO
+            motivo = acordo.observacoes_analista or "Termos fora da política vigente."
+
+            msg_texto = (
+                f"⚠️ **Atualização sobre sua proposta (ID #{acordo.id})**\n\n"
+                f"Nossa equipe analisou sua oferta e infelizmente ela **não pôde ser aprovada** neste momento.\n"
+                f"📋 **Motivo:** {motivo}\n\n"
+                f"Mas não desista! Eu reabri nossa negociação. "
+                f"Que tal tentarmos uma proposta diferente? Me diga como fica melhor para você."
+            )
+
+            # REABRE A NEGOCIAÇÃO
+            cliente.status_conversa = 'NEGOCIANDO'
+
+        cliente.save()
+
+        acordo.notificado_discord = True
+        acordo.save()
+
+        HistoricoConversa.objects.create(
+            cliente_final=cliente,
+            autor='BOT',
+            mensagem=msg_texto
+        )
+
+        notificacoes.append({
+            'discord_id': cliente.discord_user_id,
+            'mensagem': msg_texto
+        })
+
+    return notificacoes

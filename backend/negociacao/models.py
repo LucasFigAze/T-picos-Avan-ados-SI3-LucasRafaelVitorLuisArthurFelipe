@@ -44,6 +44,7 @@ class ClienteFinal(models.Model):
         ('NAO_INICIADO', 'Não Iniciado'),
         ('NEGOCIANDO', 'Em Negociação'),
         ('HANDOFF', 'Aguardando Analista'),
+        ('CONCLUIDO', 'Acordo Fechado'),
     ]
 
     empresa_cliente = models.ForeignKey(EmpresaCliente, on_delete=models.CASCADE)
@@ -133,6 +134,8 @@ class AcordoProposto(models.Model):
         limit_choices_to={'is_staff': True}
     )
     observacoes_analista = models.TextField(blank=True, help_text="Notas do analista sobre a aprovação/rejeição")
+
+    notificado_discord = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         verbose_name = "Acordo Proposto"

@@ -6,7 +6,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from django.core.management.base import BaseCommand
 from asgiref.sync import sync_to_async
-from negociacao.services import processar_mensagem_ia, buscar_clientes_para_outbound, confirmar_envio_outbound
+from negociacao.services import processar_mensagem_ia, buscar_clientes_para_outbound, confirmar_envio_outbound, verificar_retorno_analista
 
 load_dotenv()
 
@@ -43,11 +43,38 @@ class MyClient(discord.Client):
                     )
             await asyncio.sleep(60)
 
+    async def running_analyst(self):
+        """Loop do Analista (Verifica aprovações/rejeições no Admin)"""
+        while True:
+            try:
+                notificacoes = await verificar_retorno_async()
+
+                if notificacoes:
+                    print(f"📢 [ANALISTA] Enviando {len(notificacoes)} atualizações.")
+
+                    for notif in notificacoes:
+                        discord_id = notif['discord_id']
+                        msg = notif['mensagem']
+
+                        try:
+                            user = await self.fetch_user(int(discord_id))
+                            if user:
+                                await user.send(msg)
+                                print(f"✅ Notificação de analista enviada para {discord_id}")
+                        except Exception as e:
+                            print(f"❌ Erro ao notificar usuário {discord_id}: {e}")
+
+            except Exception as e:
+                print(f"Erro no loop do analista: {e}")
+
+            await asyncio.sleep(15)
+
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
         # Teste inicial (opcional)
         # await self.startConversation('275275075345973250', "Olá, isso é um teste por enquanto")
         self.loop.create_task(self.running_bot())
+        self.loop.create_task(self.running_analyst())
 
     async def on_raw_typing(self, payload):
         if payload.guild_id is None:
@@ -71,9 +98,9 @@ class MyClient(discord.Client):
                     if diff_time.seconds > MINI_DELAY:
                         break
                     await asyncio.sleep(MINI_DELAY)
-                
+
                 if message.author.id in self.messages:
-                    break     
+                    break
 
             content = " ".join([text["content"] for text in self.messages[message.author.id]])
             print(f"Teste conteúdo: {content} ")
@@ -96,6 +123,8 @@ intents.dm_messages = True
 processar_mensagem_async = sync_to_async(processar_mensagem_ia)
 buscar_clientes_async = sync_to_async(buscar_clientes_para_outbound)
 confirmar_envio_async = sync_to_async(confirmar_envio_outbound)
+verificar_retorno_async = sync_to_async(verificar_retorno_analista)
+
 
 class Command(BaseCommand):
     help = "Roda o bot do Discord"

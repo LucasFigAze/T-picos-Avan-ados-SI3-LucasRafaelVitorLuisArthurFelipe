@@ -23,8 +23,10 @@ def marcar_aprovado(modeladmin, request, queryset):
 @admin.action(description='❌ REJEITAR acordos selecionados')
 def marcar_rejeitado(modeladmin, request, queryset):
     """
-    Define o status como REJEITADO e atribui o analista logado.
+    Define o status como REJEITADO.
     """
+    queryset.filter(observacoes_analista='').update(observacoes_analista="Proposta fora dos parâmetros da política de crédito.")
+
     queryset.update(status='REJEITADO', analista_responsavel=request.user)
     modeladmin.message_user(request, f"{queryset.count()} acordos foram rejeitados.")
 
