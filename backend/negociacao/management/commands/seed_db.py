@@ -33,7 +33,7 @@ class Command(BaseCommand):
         )
 
         # 2. Cliente
-        discord_id_teste = "simulacao_user_001"
+        discord_id_teste = "447526544387211264"
 
         cliente = ClienteFinal.objects.create(
             empresa_cliente=empresa,

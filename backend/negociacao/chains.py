@@ -15,7 +15,7 @@ safety_settings = {
 }
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
+    model="gemini-2.5-flash-lite",
     google_api_key=os.environ.get("GOOGLE_API_KEY"),
     temperature=0.5,
     convert_system_message_to_human=True,
@@ -63,18 +63,13 @@ intention_template = """
 Analise a última mensagem do usuário. O objetivo é identificar se a negociação foi CONCLUÍDA e o acordo pode ser registrado AGORA.
 
 Responda APENAS:
-- "ACORDO": Se o usuário deu o aceite final para a proposta. Exemplos:
-    - "Pode gerar o boleto"
-    - "Ok, fechado"
-    - "Aceito essa proposta de 3x"
-    - "Pode mandar pro meu email" (Confirmando o envio)
-    - "Tá ótimo assim"
-
-- "CONTINUAR": Se o usuário:
-    - Fez uma pergunta ("Como posso pagar?", "Aceita cartão?")
-    - Pediu para esperar
-    - Está negociando valores
-    - Disse apenas "Sim" (sem contexto claro de fechamento final)
+- "ACORDO": SOMENTE se o usuário concordou explicitamente com uma proposta JÁ FEITA pelo bot.
+    - Exemplos Válidos: "Pode gerar o boleto", "Fechado", "Aceito", "Pode mandar".
+    
+- "CONTINUAR": Em qualquer outro caso, inclusive se o usuário sugerir novos termos.
+    - Se o usuário disser "Faz em 10x?", responda CONTINUAR (o bot precisa calcular o valor antes).
+    - Se o usuário disser "Aceito pagar em 10x" (mas o bot ainda não mostrou o valor da parcela), responda CONTINUAR.
+    - Perguntas, dúvidas ou negociação de valores = CONTINUAR.
 
 Mensagem do usuário: {input}
 """
