@@ -51,6 +51,12 @@ def processar_mensagem_ia(discord_id, mensagem_usuario):
 
     historico_msgs = HistoricoConversa.objects.filter(cliente_final=cliente).order_by('-timestamp')[:10]
 
+    ultimo_bot_obj = HistoricoConversa.objects.filter(
+        cliente_final=cliente,
+        autor='BOT'
+    ).order_by('-id').first()
+    ultima_msg_bot_texto = ultimo_bot_obj.mensagem if ultimo_bot_obj else "Nenhuma mensagem anterior."
+
     historico_texto = "\n".join([f"{h.autor}: {h.mensagem}" for h in reversed(historico_msgs)])
 
     detalhes_faturas = "\n".join([f"- Fatura #{f.id}: R$ {f.valor_original:,.2f} (Venc: {f.data_vencimento.strftime('%d/%m/%Y')})" for f in faturas])
@@ -75,12 +81,12 @@ def processar_mensagem_ia(discord_id, mensagem_usuario):
 
     # 8. Análise de Intenção PRIMEIRO (Antes de salvar histórico)
     # Verificamos se ESSA mensagem do usuário já fecha o acordo
-    intencao = intention_chain.invoke({"input": mensagem_usuario})
-    
+    intencao = intention_chain.invoke({"input": mensagem_usuario, "ultima_mensagem_bot": ultima_msg_bot_texto})
+
     if "ACORDO" in intencao.upper():
         cliente.status_conversa = 'HANDOFF'
         cliente.save()
-        
+
         acordo = AcordoProposto.objects.create(
             cliente_final=cliente,
             valor_total_original=valor_total_atual,

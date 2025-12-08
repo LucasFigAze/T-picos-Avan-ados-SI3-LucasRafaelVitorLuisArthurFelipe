@@ -17,7 +17,7 @@ safety_settings = {
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash-lite",
     google_api_key=os.environ.get("GOOGLE_API_KEY"),
-    temperature=0.5,
+    temperature=0.3,
     convert_system_message_to_human=True,
     safety_settings=safety_settings
 )
@@ -41,6 +41,13 @@ Faturas em Aberto:
 4. Se o cliente pedir algo fora dessas regras, recuse educadamente e faça uma contraproposta dentro das regras.
 5. Seja objetivo, empático e profissional.
 
+--- REGRA DE OURO (COMPLIANCE) ---
+NUNCA finalize o acordo imediatamente após o cliente dizer "aceito".
+Se o cliente aceitar uma proposta, você DEVE OBRIGATORIAMENTE:
+1. Resumir explicitamente os termos (Valor total, Número de parcelas, Valor da parcela).
+2. Perguntar: "Você confirma estes termos para a geração do boleto?"
+Somente após essa confirmação explícita o processo será encerrado.
+
 --- TABELA DE CÁLCULOS PRÉ-APROVADA (USE ESTES VALORES) ---
 Abaixo estão os valores EXATOS para parcelamento. NÃO faça cálculos matemáticos, apenas consulte esta lista se o cliente perguntar sobre parcelas:
 {tabela_calculada}
@@ -58,20 +65,27 @@ negotiation_prompt = ChatPromptTemplate.from_template(negotiation_template)
 negotiation_chain = negotiation_prompt | llm | StrOutputParser()
 
 
-# CHAIN 2: Analista de Intenção
+# CHAIN 2: Analista de Intenção (Agora com Contexto da Última Mensagem)
 intention_template = """
-Analise a última mensagem do usuário. O objetivo é identificar se a negociação foi CONCLUÍDA e o acordo pode ser registrado AGORA.
+Analise a interação abaixo para decidir se fechamos o acordo AGORA.
+
+ÚLTIMA MENSAGEM DO BOT: "{ultima_mensagem_bot}"
+MENSAGEM DO USUÁRIO: "{input}"
+
+Regras para decidir:
+1. O Bot apresentou valores concretos (R$, parcelas) na última mensagem?
+2. O Bot pediu uma confirmação final na última mensagem?
+3. O Usuário respondeu confirmando positivamente (Sim, Pode gerar, Confirmo)?
 
 Responda APENAS:
-- "ACORDO": SOMENTE se o usuário concordou explicitamente com uma proposta JÁ FEITA pelo bot.
-    - Exemplos Válidos: "Pode gerar o boleto", "Fechado", "Aceito", "Pode mandar".
-    
-- "CONTINUAR": Em qualquer outro caso, inclusive se o usuário sugerir novos termos.
-    - Se o usuário disser "Faz em 10x?", responda CONTINUAR (o bot precisa calcular o valor antes).
-    - Se o usuário disser "Aceito pagar em 10x" (mas o bot ainda não mostrou o valor da parcela), responda CONTINUAR.
-    - Perguntas, dúvidas ou negociação de valores = CONTINUAR.
+- "ACORDO": SE E SOMENTE SE todas as 3 condições acima forem verdadeiras.
+    - Exemplo: Bot disse "Confirma 10x de R$ 50?" e Usuário disse "Sim".
 
-Mensagem do usuário: {input}
+- "CONTINUAR": Em todos os outros casos.
+    - Se o Bot apenas ofereceu "Quer parcelar?" e o usuário disse "Sim" -> CONTINUAR.
+    - Se o usuário disse "Aceito pagar em 10x", mas o bot ainda não tinha resumido os termos -> CONTINUAR (O bot precisa resumir primeiro).
+
+Sua decisão:
 """
 
 intention_prompt = ChatPromptTemplate.from_template(intention_template)
