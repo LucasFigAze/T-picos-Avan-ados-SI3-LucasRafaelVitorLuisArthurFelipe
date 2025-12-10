@@ -4,23 +4,28 @@ Este arquivo descreve como construir, configurar e executar o projeto de forma a
 
 ## Pré-requisitos
 
-- Linguagem/Framework utilizado
-- Ferramentas adicionais 
+Certifique-se de ter instalado:
+- Python 3.10+
+- pip e venv
+- PostgreSQL (com usuário e database criados)
+- Git
+- (Opcional) Docker, caso queira rodar via containers 
 
 ## Passos para Build
 
 1. Clone o repositório:
-   \`\`\`bash
-   git clone https://github.com/SEU_USUARIO/NOME_REPOSITORIO.git
-   cd NOME_REPOSITORIO
-   \`\`\`
+   - git clone https://github.com/LucasFigAze/T-picos-Avan-ados-SI3-LucasRafaelVitorLuisArthurFelipe.git
+   - cd T-picos-Avan-ados-SI3-LucasRafaelVitorLuisArthurFelipe
 
-2. Instale as dependências:
+2. Crie um ambiente virtual:
+   - python3 -m venv venv
+   - source venv/bin/activate      # Linux/Mac
+   - venv\Scripts\activate         # Windows
 
 
-## Executando o Projeto
+4. Instale as dependências:
+   - pip install -r requirements.txt
 
-- Para rodar localmente:
 
 
 ## Observações
