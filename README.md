@@ -1,4 +1,4 @@
-# 🤖 Fin.negocia - Agente de Negociação de Dívidas com IA
+# 🤖 Finegocia - Agente de Negociação de Dívidas com IA
 
 > **Negociação empática, eficiente e automatizada.**
 
